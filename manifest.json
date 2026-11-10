@@ -9,4 +9,15 @@
   "background_color": "#241447",
   "theme_color": "#241447",
   "icons": []
-}
+}"icons": [
+  {
+    "src": "./kite-game-icon-192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  },
+  {
+    "src": "./kite-game-icon-512.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }
+]
