@@ -1,0 +1,12 @@
+{
+  "id": "/-kite-flying-game-/",
+  "name": "Kite Flying Game",
+  "short_name": "Kite Game",
+  "description": "Enjoy a fun kite flying game",
+  "start_url": "/-kite-flying-game-/",
+  "scope": "/-kite-flying-game-/",
+  "display": "fullscreen",
+  "background_color": "#241447",
+  "theme_color": "#241447",
+  "icons": []
+}
