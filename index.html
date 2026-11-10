@@ -648,4 +648,12 @@ canvas{display:block;position:absolute;inset:0}
 })();
 </script>
 
-</body></html>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js")
+      .then(() => console.log("Service Worker Ready"))
+      .catch(error => console.error(error));
+  });
+}
+</script></body></html>
