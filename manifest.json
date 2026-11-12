@@ -1,24 +1,37 @@
 
 {
-  "id": "./",
+  "id": "/-kite-flying-game-/",
   "name": "Kite Flying Game",
   "short_name": "Kite Game",
   "description": "Enjoy a fun kite flying game",
-  "start_url": "./",
-  "scope": "./",
+  "start_url": "/-kite-flying-game-/",
+  "scope": "/-kite-flying-game-/",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#241445",
   "theme_color": "#241445",
-  "orientation": "portrait",
+  "categories": ["games", "entertainment"],
   "icons": [
     {
-      "src": "./kite-game-icon-192.png",
+      "src": "/-kite-flying-game-/kite-game-icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "./kite-game-icon-512-1.png
+      "src": "/-kite-flying-game-/kite-game-icon-512-1.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/-kite-flying-game-/launchericon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/-kite-flying-game-/launchericon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
