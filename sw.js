@@ -1,27 +1,54 @@
-const CACHE_NAME = "kite-game-v1";
+
+const CACHE_NAME = "kite-game-v2";
+
+const APP_FILES = [
+  "./",
+  "./index.html",
+  "./manifest.json",
+  "./kite-game-icon-192.png",
+  "./kite-game-icon-512-1.png"
+];
 
 self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache =>
-      cache.addAll([
-        "./",
-        "./manifest.json"
-      ])
+      cache.addAll(APP_FILES)
     )
   );
+
   self.skipWaiting();
 });
 
 self.addEventListener("activate", event => {
-  event.waitUntil(self.clients.claim());
+  event.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(
+        keys
+          .filter(key => key.startsWith("kite-game-") && key !== CACHE_NAME)
+          .map(key => caches.delete(key))
+      )
+    ).then(() => self.clients.claim())
+  );
 });
 
 self.addEventListener("fetch", event => {
-  if (event.request.method === "GET") {
-    event.respondWith(
-      fetch(event.request).catch(() =>
-        caches.match(event.request)
-      )
-    );
-  }
+  if (event.request.method !== "GET") return;
+
+  const url = new URL(event.request.url);
+
+  if (url.origin !== self.location.origin) return;
+
+  event.respondWith(
+    fetch(event.request)
+      .then(response => {
+        if (response.ok) {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then(cache =>
+            cache.put(event.request, copy)
+          );
+        }
+        return response;
+      })
+      .catch(() => caches.match(event.request))
+  );
 });
